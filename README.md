@@ -9,11 +9,9 @@ install SQL
 run
 > python app.py
 
-
 demo
 
 ![image](https://github.com/elina10920/TODO-App/blob/main/demo.gif)
-
 
 reference
 
