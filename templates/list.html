@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body>
+
+    <h1 class="ui aligned center header" style="margin-top: 50px;">TODO List<i class="pencil alternate
+        icon"></i></h1>
+    <div class="ui center aligned grid">
+        <form action="/add" method="POST">
+
+            <div class="ui input">
+                <input type="text" name="title" placeholder="writing todo thing here...">
+            </div>
+            <button class="ui inverted primary button" type="submit">ADD</button>
+        </form>
+    </div>
+
+    <div class="ui center aligned grid">
+        <table class="ui very basic collapsing celled table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>status</th>
+                    <th>control</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    {% for todo in todo_list %}
+
+                    <td data-label="id">{{ todo.id }}</td>
+                    <td data-label="title">{{ todo.title }}</td>
+
+                    {% if todo.finished == False %}
+                    <td data-label="status"><span class="ui gray label">Not finished</span></td>
+                    {% else %}
+                    <td data-label="status"><span class="ui green label">finished</span></td>
+                    {% endif %}
+
+                    <td data-label="control"><a href="/update/{{ todo.id }}" class="ui yellow button">Done</a>
+                        <a href="/delete/{{ todo.id }}" class="ui red button">Delete</a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
